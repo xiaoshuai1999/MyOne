@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<input type="text" id="txtdate" name="name" value="" />
+<script>
+    $(function () {
+        //$.ajax(function () {
+        //    type: "GET",
+        //        url:"https://m.toutiao.com/list/",
+        //        data: { "tag": "news_regimen", "ac": "wap", "count": "20", "format": "json_raw", "as": "A105FC2AE3F2AD4", "cp": "5CA3429AED145E1", "max_behot_time": "1554188797", "_signature": "xDxA2gAAmKjNcDrPutS318Q8QM", "i":"1554188797" },
+        //    success: function (data) {
+        //        console.log(data);    
+        //    }, error: function (data) {
+        //        alert("添加发生错误");
+        //    }
+        //})
+
+
+        $.ajax({
+            type: 'GET',
+            dataType: "jsonp",   
+            url: 'https://m.toutiao.com/list/',
+            data: { tag: "news_regimen", ac: "wap", count: "20", format: "json_raw", as: "A105FC2AE3F2AD4", cp: "5CA3429AED145E1", max_behot_time: "1554188797", _signature: "xDxA2gAAmKjNcDrPutS318Q8QM", i: "1554188797" }
+        }).done(function (data) {
+            console.log(data);
+            $("#txtdate").val(data);
+        })
+    });
+
+</script>
